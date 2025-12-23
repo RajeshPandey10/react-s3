@@ -5,6 +5,8 @@ const UseState = () => {
   console.log(useState());
   const initialValue = 0;
   const [count, setCount] = useState(initialValue);
+
+  
   const [name,setName] =useState('')
   console.log(name)
   const stock = 10;
@@ -29,20 +31,17 @@ const p ="Phone"
       });
     }
   };
-  const handleChange = (e)=>{
-    setName(e.target.value)
-    console.log(e)
-  }
-
+ 
   return (
     <>
       <ToastContainer />
-      {/* <div className="flex items-center justify-center flex-col">
+      <div className="flex items-center justify-center flex-col">
         <h1 className="border border-amber-300 text-5xl mt-50 px-6 py-2">
           {count}
         </h1>
         <div
           onClick={handleIncrementClick}
+          
           className="text-4xl border border-amber-600 mt-20 px-4 cursor-pointer"
         >
           +
@@ -53,11 +52,8 @@ const p ="Phone"
         >
           -
         </div>
-      </div> */}
-      <form action="">
-
-        <input className="border border-amber-100" onChange={handleChange} type="name" value={name} name="" id="" />
-      </form>
+      </div>
+    
     </>
   );
 };
