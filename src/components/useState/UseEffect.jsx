@@ -1,3 +1,4 @@
+import axios from "axios"
 import { useEffect, useState } from "react"
 
 
@@ -5,7 +6,7 @@ const UseEffect = () => {
     const [count,setCount] = useState(0)
     const [name,setName] = useState('Rohit')
     const [search,setSearch] = useState('search ...')
-    
+    const [products,setProducts] =useState([])
 
 
     function handleSearch(){
@@ -22,7 +23,15 @@ const UseEffect = () => {
    function handleNameClick(){
     setName("Ram")
    }
-
+   const fetchProducts = async()=>{
+    const response = await axios.get('https://dummyjson.com/products')
+    setProducts(response.data.products)
+    
+   }
+   console.log(products)
+ useEffect(()=>{
+    fetchProducts()
+ },[])
    let num = count
     //type-1
     useEffect((()=>{
@@ -48,11 +57,20 @@ const UseEffect = () => {
         <button onClick={handleClick}>+</button>
         <button onClick={handleNameClick}>change name</button>
      </div> */}
-     <div className="flex justify-end text-xl py-6 px-4 ">
+     {/* <div className="flex justify-end text-xl py-6 px-4 ">
         <input onChange={handleChange} value={search} type="text" className="text-black border px-4 rounded-full" />
 
         <button  onClick={handleSearch} className="border px-4 py-2 rounded-full cursor-pointer text-lg hover:bg-amber-100 transition-all">search</button>
-     </div>
+     </div> */}
+
+     {
+        products.map((product)=>(
+           <div className="border grid grid-cols-4">
+           <h1>{product.title}</h1>
+           <p>{product.description}</p>
+           </div>
+        ))
+     }
     
     </>
   )
