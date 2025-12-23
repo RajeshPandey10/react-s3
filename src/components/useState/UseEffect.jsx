@@ -65,7 +65,7 @@ const UseEffect = () => {
 
      {
         products.map((product)=>(
-           <div className="border grid grid-cols-4">
+           <div className="border grid grid-cols-4" key={product.id}>
            <h1>{product.title}</h1>
            <p>{product.description}</p>
            </div>
